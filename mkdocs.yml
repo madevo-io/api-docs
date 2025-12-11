@@ -4,14 +4,32 @@ site_url: https://madevo.github.io/madevo-assistant-api-docs/
 
 theme:
   name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
   palette:
-    primary: blue
+    primary: indigo
     accent: indigo
 
 nav:
-  - Introduction: index.md
-  - Authentication: authentication.md
-  - Assistant: assistant.md
-  - Data Ingestion: datasource.md
-  - Errors & Status Codes: errors.md
+  - Overview:
+      - Introduction: index.md
+  - API Reference:
+      - Authentication: authentication.md
+      - Assistant: assistant.md
+      - Data Ingestion: datasource.md
+      - Errors: errors.md
 
+markdown_extensions:
+  - admonition
+  - tables
+  - fenced_code
+  - codehilite
+  - toc:
+      permalink: true
+
+extra:
+  generator: false
