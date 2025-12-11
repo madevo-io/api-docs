@@ -1,1 +1,17 @@
+site_name: Madevo Assistant API
+site_description: Official REST API documentation for the Madevo Assistant platform
+site_url: https://madevo.github.io/madevo-assistant-api-docs/
+
+theme:
+  name: material
+  palette:
+    primary: blue
+    accent: indigo
+
+nav:
+  - Introduction: index.md
+  - Authentication: authentication.md
+  - Assistant: assistant.md
+  - Data Ingestion: datasource.md
+  - Errors & Status Codes: errors.md
 
