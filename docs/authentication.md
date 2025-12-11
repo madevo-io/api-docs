@@ -1,16 +1,23 @@
 # Authentication
 
-The Madevo Assistant API uses token based authentication. Clients must authenticate using valid credentials to obtain an access token.
+The Madevo Assistant API uses token based authentication. All protected endpoints require a valid access token.
 
 ## Login
 
-**Endpoint**  
+Authenticates a user and returns an access token.
+
+### Endpoint
+
 POST /restapi/login
 
-**Request Body**
+### Request Headers
+
+Content-Type: application/json
+
+### Request Body
+
 ```json
 {
   "email": "user@example.com",
   "password": "yourpassword"
 }
-
