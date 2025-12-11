@@ -1,37 +1,38 @@
 # Authentication
 
-The Madevo Assistant API uses token based authentication to secure access to all protected endpoints. Clients must authenticate using valid user credentials to obtain an access token. This token must be included in the Authorization header for all subsequent API requests.
+The Madevo Assistant API uses token based authentication.  
+All protected endpoints require a valid access token.
 
 ---
 
 ## Authentication Flow
 
-1. Authenticate using email and password to obtain an access token  
-2. Include the access token in the Authorization header for protected endpoints  
-3. Refresh the access token when it expires  
+1. Authenticate with email and password
+2. Receive an access token
+3. Include the token in the Authorization header
+4. Refresh the token when it expires
 
 ---
 
 ## Login
 
-Authenticates a user and returns an access token.
+Authenticate a user and obtain an access token.
 
 ### Endpoint
 
 POST /restapi/login
 
----
+shell
+Copy code
 
-## Request Headers
+### Headers
 
 Content-Type: application/json
 
-yaml
+bash
 Copy code
 
----
-
-## Request Body
+### Request Body
 
 ```json
 {
@@ -51,18 +52,16 @@ Copy code
 }
 Response Fields
 Field	Type	Description
-token	string	Access token used for authenticated requests
+token	string	Access token for authenticated requests
 
 Refresh Token
-Generates a new access token using an existing valid or recently expired token.
+Generate a new access token using an existing token.
 
 Endpoint
+bash
+Copy code
 POST /restapi/refresh-token
-
-Authentication
-This endpoint requires an existing access token.
-
-Required Headers
+Headers
 pgsql
 Copy code
 Authorization: Bearer YOUR_ACCESS_TOKEN
@@ -77,38 +76,36 @@ Copy code
 {
   "token": "new_access_token"
 }
-Token Usage
-All protected endpoints require the Authorization header to be set as follows:
+Using the Access Token
+Include the token in the Authorization header for all protected endpoints.
 
 makefile
 Copy code
 Authorization: Bearer YOUR_ACCESS_TOKEN
-Token Expiry and Refresh
-Access tokens have a limited lifetime
+Token Behaviour
+Tokens have a limited lifetime
 
-Clients should refresh tokens before or after expiration
+Expired tokens return a 401 response
 
-After refreshing, the new token should replace the previous one
+Refresh tokens before or after expiration
 
-Requests made with expired or invalid tokens will return a 401 response
+Replace the old token after refreshing
 
 Error Responses
 Status Code	Meaning
 400	Invalid request payload
 401	Unauthorized or invalid credentials
-403	Access forbidden
+403	Forbidden
 500	Internal server error
 
-Error responses typically include a descriptive message to assist with debugging.
+Error responses may include a descriptive message to assist debugging.
 
 Security Best Practices
-Never expose user passwords in client side code
+Never expose passwords in frontend code
 
-Always store access tokens securely
+Store tokens securely
 
-Use HTTPS for all API requests
+Always use HTTPS
 
-Rotate tokens regularly
-
-Avoid logging sensitive authentication data
+Avoid logging authentication data
 
