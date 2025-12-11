@@ -1,15 +1,12 @@
-
 # Assistant Interaction
 
-The Assistant Interaction API allows clients to communicate with a Madevo AI assistant using natural language. Messages are sent within a conversation context, enabling the assistant to maintain memory, understand intent, and provide context aware responses.
-
-This endpoint supports both simple conversational queries and advanced, data driven interactions.
+The Assistant Interaction API allows clients to communicate with a Madevo AI assistant using natural language. Messages are exchanged within a conversation context, enabling the assistant to maintain memory, understand intent, and provide context aware responses.
 
 ---
 
 ## Send Message to Assistant
 
-Sends a user message to the AI assistant and returns the assistant generated response.
+Send a user message to the AI assistant and receive a generated response.
 
 ### Endpoint
 
@@ -21,13 +18,10 @@ POST /restapi/assistant/chat
 
 This endpoint requires authentication.
 
-### Required Headers
+### Headers
 
-Authorization: Bearer YOUR_ACCESS_TOKEN
+Authorization: Bearer YOUR_ACCESS_TOKEN  
 Content-Type: application/json
-
-yaml
-Copy code
 
 ---
 
@@ -40,78 +34,98 @@ Copy code
   "skip_history": false,
   "skip_save_history": false
 }
-Request Parameters
-Field	Type	Required	Description
-conversation_id	string	Yes	Unique identifier for the conversation session
-message	string	Yes	User message sent to the assistant
-skip_history	boolean	No	If true, previous conversation history is ignored
-skip_save_history	boolean	No	If true, the message and response are not persisted
+```
 
-Response
-json
-Copy code
+---
+
+## Request Parameters
+
+| Field | Type | Required | Description |
+|------|------|----------|-------------|
+| conversation_id | string | Yes | Unique identifier for the conversation |
+| message | string | Yes | User message sent to the assistant |
+| skip_history | boolean | No | Ignore previous conversation history |
+| skip_save_history | boolean | No | Do not store the message and response |
+
+---
+
+## Response
+
+```json
 {
   "message": "Hello! How can I assist you today?",
   "visualization": {}
 }
-Response Fields
-Field	Type	Description
-message	string	Assistant generated natural language response
-visualization	object	Optional structured output for UI components
+```
 
-The visualization field may contain structured data intended for charts, tables, or other frontend visual elements. If no visualization is applicable, this field may be empty.
+---
 
-Conversation Management
-Conversation ID
-The conversation_id groups messages into a single conversational session. Reusing the same conversation_id allows the assistant to maintain context across multiple requests.
+## Response Fields
 
-Examples of context aware interactions include:
+| Field | Type | Description |
+|------|------|-------------|
+| message | string | Assistant generated response |
+| visualization | object | Optional structured output for UI rendering |
 
-Follow up questions
+---
 
-Clarifications
+## Conversation Management
 
-Multi step reasoning
+### Conversation ID
 
-Progressive data exploration
+The conversation_id groups messages into a single conversational session. Reusing the same conversation_id allows the assistant to maintain context across multiple interactions.
 
-If a new conversation_id is provided, the assistant will start a new conversation context.
+Typical use cases include:
 
-History Controls
-skip_history
-When set to true, the assistant will ignore any previous messages associated with the conversation_id and respond only to the current message.
+- Follow up questions
+- Clarifications
+- Multi step reasoning
+- Progressive exploration of data
 
-This is useful for:
+Providing a new conversation_id starts a new conversation.
 
-Stateless queries
+---
 
-One off questions
+## History Controls
 
-Debugging responses
+### skip_history
 
-skip_save_history
-When set to true, the current message and assistant response will not be stored. Future messages using the same conversation_id will not include this interaction.
+When set to true, the assistant ignores all previous messages in the conversation and responds only to the current message.
 
 This is useful for:
 
-Sensitive queries
+- Stateless queries
+- One off questions
+- Debugging
 
-Temporary or exploratory prompts
+### skip_save_history
 
-Privacy sensitive workflows
+When set to true, the current message and response are not persisted.
 
-Example Request
-json
-Copy code
+This is useful for:
+
+- Sensitive requests
+- Temporary or exploratory queries
+- Privacy focused workflows
+
+---
+
+## Example Request
+
+```json
 {
   "conversation_id": "network-ops-001",
   "message": "What was the average temperature yesterday?",
   "skip_history": false,
   "skip_save_history": false
 }
-Example Response
-json
-Copy code
+```
+
+---
+
+## Example Response
+
+```json
 {
   "message": "The average temperature yesterday was 21.4°C.",
   "visualization": {
@@ -124,23 +138,35 @@ Copy code
     ]
   }
 }
-Error Responses
-Status Code	Meaning
-400	Invalid request payload
-401	Unauthorized or missing token
-403	Access forbidden
-500	Internal server error
+```
 
-Error responses may include a descriptive message to assist with troubleshooting.
+---
 
-Best Practices
-Reuse conversation_id for follow up questions
+## Error Responses
 
-Use clear and specific messages for better responses
+| Status Code | Meaning |
+|------------|---------|
+| 400 | Invalid request payload |
+| 401 | Unauthorized or invalid token |
+| 403 | Forbidden |
+| 500 | Internal server error |
 
-Store access tokens securely
+Error responses may include a descriptive message to assist debugging.
 
-Refresh tokens before expiration
+---
 
-Avoid sharing sensitive information unless required
+## Best Practices
 
+- Reuse conversation_id for follow up interactions
+- Be clear and specific in user messages
+- Store access tokens securely
+- Refresh tokens before expiration
+
+---
+
+## Notes
+
+- Assistant behaviour may vary based on connected data sources and permissions
+- Visualization formats may evolve over time
+- Responses are generated dynamically and may differ for similar prompts
+****
