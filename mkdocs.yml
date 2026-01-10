@@ -5,14 +5,25 @@ site_url: https://madevo.github.io/madevo-assistant-api-docs/
 theme:
   name: material
   language: en
+  logo: assets/MadevoLogo.png
+
   features:
     - navigation.tabs
     - navigation.sections
     - navigation.expand
+    - navigation.top
+    - toc.follow
     - content.code.copy
+    - search.suggest
+    - search.highlight
+
   palette:
-    primary: indigo
-    accent: indigo
+    - scheme: default
+      primary: custom
+      accent: custom
+    - scheme: slate
+      primary: custom
+      accent: custom
 
 nav:
   - Overview:
@@ -30,6 +41,9 @@ markdown_extensions:
   - codehilite
   - toc:
       permalink: true
+
+extra_css:
+  - stylesheets/extra.css
 
 extra:
   generator: false
