@@ -1,93 +1,134 @@
-# Madevo Assistant REST API
+# Madevo REST API
 
 ## Introduction
 
-The Madevo Assistant REST API provides programmatic access to the Madevo AI assistant platform. It enables developers and partners to authenticate users, interact with AI assistants through conversational sessions, and ingest structured data into Madevo data sources for analysis, automation, and reporting.
+The Madevo REST API provides programmatic access to the Madevo AI platform.
 
-The API is designed around REST principles and uses JSON for all request and response payloads.
+It enables developers and partners to:
+
+- Authenticate users securely  
+- Interact with AI assistants through conversational sessions  
+- Ingest structured data into Madevo datasources  
+- Perform operational analysis and automation workflows  
+
+The API follows REST principles and uses JSON for all request and response payloads.
+
+---
 
 ## Base URL
 
-Development environment  
+All endpoint paths described in this documentation must be appended to the appropriate base URL.
+
+### Development Environment
+
+```
 https://dev.madevo.ai/api/v1
+```
 
-Production environment  
+### Production Environment
+
+```
 https://app.madevo.ai/api/v1
+```
 
-All endpoint paths described in this documentation should be appended to the selected base URL.
+---
+
+## Core Capabilities
+
+The API provides the following capabilities:
+
+- Secure authentication and token refresh  
+- Conversational interaction with AI assistants  
+- Persistent, context-aware conversation sessions  
+- Structured data ingestion into Madevo datasources  
+- Support for Markdown and structured assistant outputs  
+- Automation-friendly response patterns  
+
+---
 
 ## Authentication Overview
 
-The Madevo Assistant API uses token based authentication. Clients must authenticate using an email address and password to obtain an access token. This token must be included in the Authorization header for all protected endpoints.
+The Madevo API uses token-based authentication.
 
 Authentication flow:
 
 1. Authenticate with email and password to obtain an access token  
-2. Include the token in the Authorization header for API requests  
-3. Refresh the token when it expires to maintain access  
+2. Include the token in the `Authorization` header for protected endpoints  
+3. Refresh the token when it expires  
 
-## Core Capabilities
+All protected endpoints require:
 
-The API provides the following main capabilities:
+```
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
 
-- Secure user authentication and token refresh
-- Conversational interaction with AI assistants
-- Persistent, context aware conversations
-- Structured data ingestion into Madevo data sources
-- Support for visual and structured assistant outputs
+See the Authentication section for full details.
+
+---
 
 ## API Conventions
 
 ### Request Format
 
-- All requests must use HTTPS
-- Request and response bodies are formatted as JSON
-- Content-Type should be set to application/json
+- All requests must use HTTPS  
+- Request and response bodies are formatted as JSON  
+- `Content-Type` must be set to `application/json`  
 
-### Authorization Header
-
-All protected endpoints require the following header:
-
-Authorization: Bearer YOUR_ACCESS_TOKEN
-
-powershell
-Copy code
+---
 
 ### Timestamps
 
-Where applicable, timestamps should be provided in ISO 8601 format using UTC.
+Where applicable, timestamps must be provided in ISO 8601 format using UTC.
 
 Example:
 
+```
 2025-01-01T12:00:00Z
+```
 
-csharp
-Copy code
+---
 
 ## Environments
 
-| Environment | Base URL |
-|------------|----------|
-| Development | https://dev.madevo.ai/api/v1 |
-| Production | https://app.madevo.ai/api/v1 |
+| Environment  | Base URL                          |
+|-------------|-----------------------------------|
+| Development | https://dev.madevo.ai/api/v1      |
+| Production  | https://app.madevo.ai/api/v1      |
+
+---
 
 ## Versioning
 
-The current version of the API is v1. Backwards incompatible changes will be introduced in future versions and documented accordingly.
+The current API version is `v1`.
+
+Backwards incompatible changes will be introduced in future versions and documented accordingly.
 
 Clients are encouraged to pin integrations to a specific API version.
 
+---
+
 ## Getting Started
 
-To get started with the Madevo Assistant API:
+To begin integrating with the Madevo API:
 
-1. Obtain valid login credentials
-2. Authenticate using the login endpoint to receive an access token
-3. Use the assistant chat endpoint to interact with an AI assistant
-4. Push structured data to a data source if required
+1. Obtain valid login credentials  
+2. Authenticate to receive an access token  
+3. Call the Assistant endpoint to interact with an AI assistant  
+4. Optionally push structured data to a datasource  
 
-Detailed examples for each endpoint are provided in the following sections of this documentation.
+Detailed examples are provided in the following sections of this documentation.
+
+---
+
+## Documentation Structure
+
+- **Authentication** — Login and token management  
+- **Assistant Interaction** — Conversational AI endpoint  
+- **Datasource Management** — Structured data ingestion  
+- **Errors and Status Codes** — Error handling and retry guidance  
+
+---
 
 ## Support
 
-If you encounter issues or have questions about the API, please contact the Madevo team or your designated technical contact.
+For technical questions or integration support, contact the Madevo team or your designated technical contact.
