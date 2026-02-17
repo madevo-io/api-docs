@@ -1,10 +1,6 @@
-/* Madevo MkDocs Material polish layer
-   File: docs/stylesheets/extra.css
-*/
-
-/* =========================
-   Brand colors
-   ========================= */
+/* ================================
+   Brand Colors
+================================ */
 :root {
   --md-primary-fg-color: #123D7A;
   --md-accent-fg-color: #2563EB;
@@ -15,122 +11,140 @@
   --md-accent-fg-color: #93C5FD;
 }
 
-/* =========================
-   Layout and spacing
-   ========================= */
-.md-grid {
-  max-width: 1200px;
+/* ================================
+   Layout & Background
+================================ */
+
+/* Slightly lighter page background */
+.md-main {
+  background-color: #f8fafc;
 }
 
+/* Limit content width more aggressively */
+.md-grid {
+  max-width: 1100px;
+}
+
+/* Add subtle depth to content area */
+.md-content {
+  background: white;
+  border-radius: 14px;
+  padding: 2rem 2.5rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+/* Reduce top spacing */
 .md-main__inner {
   padding-top: 1rem;
 }
 
-/* =========================
+/* ================================
    Typography
-   ========================= */
+================================ */
+
 .md-typeset {
   font-size: 0.95rem;
-  line-height: 1.65;
+  line-height: 1.7;
 }
 
-.md-typeset p {
-  margin: 0.65em 0;
-  max-width: 720px;
-}
-
+.md-typeset p,
 .md-typeset li {
   max-width: 720px;
 }
 
 .md-typeset h1 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--md-primary-fg-color);
-  margin: 0 0 1rem;
+  font-size: 2.3rem;
+  font-weight: 750;
+  margin-bottom: 1rem;
   letter-spacing: -0.02em;
 }
 
 .md-typeset h2 {
-  margin-top: 2rem;
-  margin-bottom: 0.65rem;
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  font-size: 1.6rem;
+  margin-top: 1.8rem;
+  margin-bottom: 0.6rem;
+  font-weight: 700;
 }
 
 .md-typeset h3 {
-  margin-top: 1.5rem;
+  font-size: 1.2rem;
+  margin-top: 1.4rem;
   margin-bottom: 0.5rem;
   font-weight: 650;
 }
 
-.md-typeset h4 {
-  margin-top: 1.2rem;
-  margin-bottom: 0.4rem;
-  font-weight: 650;
-}
-
-/* Slightly stronger link styling */
+/* Links cleaner */
 .md-typeset a {
   text-decoration: none;
+  font-weight: 500;
 }
 
 .md-typeset a:hover {
   text-decoration: underline;
 }
 
-/* =========================
-   Code blocks
-   ========================= */
+/* ================================
+   Code Blocks
+================================ */
+
+.md-typeset pre {
+  border-radius: 12px;
+  padding: 1rem 1.2rem;
+  font-size: 0.85rem;
+}
+
 .md-typeset code {
   font-size: 0.85rem;
 }
 
-.md-typeset pre {
-  border-radius: 10px;
-  padding: 1rem;
-}
-
-/* Make inline code a bit more readable */
 .md-typeset :not(pre) > code {
+  background-color: #f1f5f9;
+  padding: 0.2em 0.4em;
   border-radius: 6px;
-  padding: 0.15em 0.35em;
 }
 
-/* =========================
+/* ================================
    Tables
-   ========================= */
+================================ */
+
 .md-typeset table {
   font-size: 0.9rem;
 }
 
 .md-typeset table th {
-  font-weight: 650;
+  font-weight: 700;
 }
 
-/* =========================
-   Admonitions (callouts)
-   ========================= */
-.md-typeset .admonition,
-.md-typeset details {
-  border-radius: 10px;
-}
-
-/* =========================
-   TOC and sidebar polish
-   ========================= */
-.md-sidebar--secondary {
-  font-size: 0.85rem;
-}
+/* ================================
+   Sidebar Polish
+================================ */
 
 .md-nav__title {
-  font-weight: 650;
+  font-weight: 700;
 }
 
-/* =========================
-   Subtle section separators
-   ========================= */
+.md-sidebar--primary {
+  background-color: #f8fafc;
+}
+
+.md-nav__link--active {
+  font-weight: 600;
+}
+
+/* ================================
+   Admonitions
+================================ */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 12px;
+}
+
+/* ================================
+   Horizontal Rules
+================================ */
+
 .md-typeset hr {
-  margin: 1.6rem 0;
-  opacity: 0.35;
+  margin: 1.5rem 0;
+  opacity: 0.25;
 }
