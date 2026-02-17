@@ -1,31 +1,38 @@
 # Authentication
 
-The Madevo Assistant API uses token based authentication. All protected endpoints require a valid access token.
+The Madevo API uses token-based authentication.  
+All protected endpoints require a valid access token.
+
+Authentication ensures secure access to assistant interactions and datasource operations.
 
 ---
 
-## Authentication Flow
+# Authentication Flow
 
-1. Authenticate using email and password
-2. Receive an access token
-3. Include the token in the Authorization header
-4. Refresh the token when it expires
+1. Authenticate using email and password  
+2. Receive an access token  
+3. Include the token in the `Authorization` header  
+4. Refresh the token when it expires  
 
 ---
 
-## Login
+# Login
 
 Authenticate a user and obtain an access token.
 
-### Endpoint
+## Endpoint
 
+```
 POST /restapi/login
+```
 
-### Headers
+## Headers
 
+```
 Content-Type: application/json
+```
 
-### Request Body
+## Request Body
 
 ```json
 {
@@ -34,14 +41,14 @@ Content-Type: application/json
 }
 ```
 
-### Request Parameters
+## Request Parameters
 
 | Field | Type | Required | Description |
-|------|------|----------|-------------|
+|-------|------|----------|-------------|
 | email | string | Yes | User email address |
 | password | string | Yes | User password |
 
-### Response
+## Response
 
 ```json
 {
@@ -49,34 +56,38 @@ Content-Type: application/json
 }
 ```
 
-### Response Fields
+## Response Fields
 
 | Field | Type | Description |
-|------|------|-------------|
+|-------|------|-------------|
 | token | string | Access token used for authenticated requests |
 
 ---
 
-## Refresh Token
+# Refresh Token
 
 Generate a new access token using an existing valid or recently expired token.
 
-### Endpoint
+## Endpoint
 
+```
 POST /restapi/refresh-token
+```
 
-### Headers
+## Headers
 
-Authorization: Bearer YOUR_ACCESS_TOKEN  
+```
+Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
+```
 
-### Request Body
+## Request Body
 
 ```json
 {}
 ```
 
-### Response
+## Response
 
 ```json
 {
@@ -86,26 +97,46 @@ Content-Type: application/json
 
 ---
 
-## Using the Access Token
+# Using the Access Token
 
-Include the access token in the Authorization header for all protected endpoints.
+Include the access token in the `Authorization` header for all protected endpoints.
 
-```text
+```
 Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+Requests without a valid token will return:
+
+```
+401 Unauthorized
 ```
 
 ---
 
-## Token Behaviour
+# Token Behaviour
 
-- Tokens have a limited lifetime
-- Expired tokens return a 401 response
-- Refresh tokens before or after expiration
-- Replace the old token after refreshing
+- Tokens have a limited lifetime  
+- Expired or invalid tokens return a `401` response  
+- Clients must refresh tokens before retrying protected requests  
+- After refreshing, replace the old token immediately  
+- Do not retry requests with an expired token  
 
 ---
 
-## Error Responses
+# Recommended Token Handling Strategy
+
+For production systems:
+
+1. Detect `401 Unauthorized` responses  
+2. Call `/restapi/refresh-token`  
+3. Retry the original request with the new token  
+4. If refresh fails, re-authenticate using login  
+
+Avoid repeated retries with invalid credentials.
+
+---
+
+# Error Responses
 
 | Status Code | Meaning |
 |------------|---------|
@@ -114,20 +145,30 @@ Authorization: Bearer YOUR_ACCESS_TOKEN
 | 403 | Forbidden |
 | 500 | Internal server error |
 
-Error responses may include a descriptive message to assist debugging.
+Example error response:
+
+```json
+{
+  "error": "unauthorized",
+  "message": "Invalid or expired access token"
+}
+```
 
 ---
 
-## Security Best Practices
+# Security Best Practices
 
-- Never expose passwords in frontend code
-- Store tokens securely
-- Always use HTTPS
-- Avoid logging authentication data
+- Never expose passwords in frontend applications  
+- Perform authentication from a secure backend service  
+- Store tokens securely  
+- Always use HTTPS  
+- Avoid logging tokens or authentication payloads  
+- Rotate credentials if compromise is suspected  
 
 ---
 
-## Notes
+# Notes
 
-- Token lifetime and behaviour may change in future API versions
-- Authentication requirements depend on user permissions
+- Token lifetime and behavior may evolve in future API versions  
+- Authentication requirements depend on user permissions  
+- Access to datasources and assistant features is permission-based  
