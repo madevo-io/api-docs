@@ -5,7 +5,7 @@ site_url: https://madevo.github.io/madevo-assistant-api-docs/
 theme:
   name: material
   language: en
-  logo: assets/MadevoLogo.png
+  logo: assets/white.png
 
   features:
     - navigation.tabs
