@@ -1,0 +1,70 @@
+/* ===== Layout Width ===== */
+.md-grid {
+  max-width: 1200px;
+}
+
+/* ===== Typography Improvements ===== */
+.md-typeset {
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.md-typeset h1 {
+  font-weight: 650;
+  margin-bottom: 0.8rem;
+}
+
+.md-typeset h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.6rem;
+  font-weight: 600;
+}
+
+.md-typeset h3 {
+  margin-top: 1.4rem;
+  font-weight: 600;
+}
+
+.md-typeset p {
+  margin: 0.6em 0;
+}
+
+/* ===== Code Block Polish ===== */
+.md-typeset pre {
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+.md-typeset code {
+  font-size: 0.85rem;
+}
+
+/* ===== Table Improvements ===== */
+.md-typeset table {
+  font-size: 0.9rem;
+}
+
+.md-typeset table th {
+  font-weight: 600;
+}
+
+/* ===== Admonition Styling ===== */
+.md-typeset .admonition {
+  border-radius: 10px;
+}
+
+/* ===== Subtle Card Feel for Main Content ===== */
+.md-main__inner {
+  padding-top: 1.5rem;
+}
+
+/* ===== Brand Colors ===== */
+:root {
+  --md-primary-fg-color: #0B3D91;       /* Adjust to your real Madevo blue */
+  --md-accent-fg-color: #3B82F6;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #60A5FA;
+  --md-accent-fg-color: #93C5FD;
+}
