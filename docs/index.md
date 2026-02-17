@@ -1,5 +1,11 @@
 # Madevo REST API
 
+Operational AI APIs for agents interaction and datasource ingestion.
+
+---
+
+# Madevo REST API
+
 ## Introduction
 
 The Madevo REST API provides programmatic access to the Madevo AI platform.
