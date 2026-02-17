@@ -1,77 +1,136 @@
-/* ===== Layout Width ===== */
+/* Madevo MkDocs Material polish layer
+   File: docs/stylesheets/extra.css
+*/
+
+/* =========================
+   Brand colors
+   ========================= */
+:root {
+  --md-primary-fg-color: #123D7A;
+  --md-accent-fg-color: #2563EB;
+}
+
+[data-md-color-scheme="slate"] {
+  --md-primary-fg-color: #60A5FA;
+  --md-accent-fg-color: #93C5FD;
+}
+
+/* =========================
+   Layout and spacing
+   ========================= */
 .md-grid {
   max-width: 1200px;
 }
 
-/* ===== Typography Improvements ===== */
+.md-main__inner {
+  padding-top: 1rem;
+}
+
+/* =========================
+   Typography
+   ========================= */
 .md-typeset {
   font-size: 0.95rem;
   line-height: 1.65;
 }
 
-.md-typeset h1 {
-  font-weight: 650;
-  margin-bottom: 0.8rem;
-}
-
-.md-typeset h2 {
-  margin-top: 2rem;
-  margin-bottom: 0.6rem;
-  font-weight: 600;
-}
-
-.md-typeset h3 {
-  margin-top: 1.4rem;
-  font-weight: 600;
-}
-
 .md-typeset p {
-  margin: 0.6em 0;
+  margin: 0.65em 0;
+  max-width: 720px;
 }
 
-/* ===== Code Block Polish ===== */
-.md-typeset pre {
-  border-radius: 10px;
-  padding: 1rem;
-}
-
-.md-typeset code {
-  font-size: 0.85rem;
-}
-
-/* ===== Table Improvements ===== */
-.md-typeset table {
-  font-size: 0.9rem;
-}
-
-.md-typeset table th {
-  font-weight: 600;
-}
-
-/* ===== Admonition Styling ===== */
-.md-typeset .admonition {
-  border-radius: 10px;
+.md-typeset li {
+  max-width: 720px;
 }
 
 .md-typeset h1 {
   font-size: 2.4rem;
   font-weight: 700;
   color: var(--md-primary-fg-color);
-  margin-bottom: 1rem;
+  margin: 0 0 1rem;
+  letter-spacing: -0.02em;
 }
 
-/* ===== Subtle Card Feel for Main Content ===== */
-.md-main__inner {
-  padding-top: 1.5rem;
+.md-typeset h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.65rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
 }
 
-/* ===== Brand Colors ===== */
-:root {
-  --md-primary-fg-color: #0B3D91;       /* Adjust to your real Madevo blue */
-  --md-accent-fg-color: #3B82F6;
+.md-typeset h3 {
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 650;
 }
 
-[data-md-color-scheme="slate"] {
-  --md-primary-fg-color: #60A5FA;
-  --md-accent-fg-color: #93C5FD;
+.md-typeset h4 {
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  font-weight: 650;
+}
+
+/* Slightly stronger link styling */
+.md-typeset a {
+  text-decoration: none;
+}
+
+.md-typeset a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   Code blocks
+   ========================= */
+.md-typeset code {
+  font-size: 0.85rem;
+}
+
+.md-typeset pre {
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* Make inline code a bit more readable */
+.md-typeset :not(pre) > code {
+  border-radius: 6px;
+  padding: 0.15em 0.35em;
+}
+
+/* =========================
+   Tables
+   ========================= */
+.md-typeset table {
+  font-size: 0.9rem;
+}
+
+.md-typeset table th {
+  font-weight: 650;
+}
+
+/* =========================
+   Admonitions (callouts)
+   ========================= */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 10px;
+}
+
+/* =========================
+   TOC and sidebar polish
+   ========================= */
+.md-sidebar--secondary {
+  font-size: 0.85rem;
+}
+
+.md-nav__title {
+  font-weight: 650;
+}
+
+/* =========================
+   Subtle section separators
+   ========================= */
+.md-typeset hr {
+  margin: 1.6rem 0;
+  opacity: 0.35;
 }
