@@ -53,6 +53,13 @@
   border-radius: 10px;
 }
 
+.md-typeset h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--md-primary-fg-color);
+  margin-bottom: 1rem;
+}
+
 /* ===== Subtle Card Feel for Main Content ===== */
 .md-main__inner {
   padding-top: 1.5rem;
