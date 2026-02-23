@@ -1,6 +1,6 @@
 site_name: Madevo Documentation
 site_description: Product guides and API reference for the Madevo platform
-site_url: https://madevo.github.io/madevo-assistant-api-docs/
+site_url: https://madevo-io.github.io/api-docs/
 
 theme:
   name: material
@@ -28,7 +28,7 @@ theme:
 
 nav:
   - Product:
-      - Overview: product/index.md
+      - Overview: index.md
       - Datasource (UI): product/datasources-ui.md
       - Assistant (UI): product/assistant-ui.md
       - Agent (UI): product/agent-ui.md
