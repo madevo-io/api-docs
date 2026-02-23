@@ -1,5 +1,5 @@
-site_name: Madevo Assistant API
-site_description: Official REST API documentation for the Madevo Assistant platform
+site_name: Madevo Documentation
+site_description: Product guides and API reference for the Madevo platform
 site_url: https://madevo.github.io/madevo-assistant-api-docs/
 
 theme:
@@ -27,10 +27,8 @@ theme:
       accent: custom
 
 nav:
-  - Overview:
-      - Overview: index.md
   - Product:
-      - Product Guides: product/index.md
+      - Overview: product/index.md
       - Datasource (UI): product/datasources-ui.md
       - Assistant (UI): product/assistant-ui.md
       - Agent (UI): product/agent-ui.md
