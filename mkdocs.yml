@@ -29,6 +29,12 @@ theme:
 nav:
   - Overview:
       - Overview: index.md
+  - Product:
+      - Product Guides: product/index.md
+      - Datasource (UI): product/datasources-ui.md
+      - Assistant (UI): product/assistant-ui.md
+      - Agent (UI): product/agent-ui.md
+      - Data Schema and Semantics: product/data-schema.md
   - API:
       - Authentication: authentication.md
       - Assistant:
