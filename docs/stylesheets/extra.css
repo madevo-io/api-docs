@@ -20,9 +20,9 @@
   background-color: #f8fafc;
 }
 
-/* Limit content width more aggressively */
+/* Widen overall content container for docs */
 .md-grid {
-  max-width: 1100px;
+  max-width: 1400px;
 }
 
 /* Add subtle depth to content area */
@@ -47,9 +47,10 @@
   line-height: 1.7;
 }
 
+/* Allow paragraphs and lists to use full content width */
 .md-typeset p,
 .md-typeset li {
-  max-width: 720px;
+  max-width: none;
 }
 
 .md-typeset h1 {
@@ -113,6 +114,12 @@
 
 .md-typeset table th {
   font-weight: 700;
+}
+
+/* Make wide tables scroll instead of forcing narrow layout */
+.md-typeset__table {
+  overflow-x: auto;
+  display: block;
 }
 
 /* ================================
